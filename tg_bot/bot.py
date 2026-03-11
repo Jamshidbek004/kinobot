@@ -25,11 +25,8 @@ dp = Dispatcher()
 # Import handlers after django setup
 from tg_bot.handlers import router
 
-async def main():
-    logging.basicConfig(level=logging.INFO)
-    dp.include_router(router)
-    await bot.delete_webhook(drop_pending_updates=True)
-    await dp.start_polling(bot)
+# Setup dispatcher unconditionally for the webhook
+dp.include_router(router)
 
-if __name__ == "__main__":
-    asyncio.run(main())
+# We no longer need the polling main() function here, 
+# as Django will handle incoming requests via the webhook.
