@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-&q%jhvr#e(z0w#y!eb1b+3o3yno^nd(-6!wc-yubf-j6yi-vhx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['kinobot2026.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
