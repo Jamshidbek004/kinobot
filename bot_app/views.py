@@ -26,6 +26,9 @@ def telegram_webhook(request):
             async_to_sync(dp.feed_update)(bot=bot, update=update)
             
         except Exception as e:
+            import traceback
+            error_msg = traceback.format_exc()
             print(f"Webhook Error: {e}")
+            return JsonResponse({"status": "error", "message": str(e), "traceback": error_msg})
             
     return JsonResponse({"status": "ok"})
