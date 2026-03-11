@@ -20,7 +20,9 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR('BOT_TOKEN not found in .env file'))
             return
             
-        bot = Bot(token=bot_token)
+        from aiogram.client.session.aiohttp import AiohttpSession
+        session = AiohttpSession(proxy="http://proxy.server:3128")
+        bot = Bot(token=bot_token, session=session)
         
         async def set_webhook():
             # Drop pending updates to avoid processing old messages
