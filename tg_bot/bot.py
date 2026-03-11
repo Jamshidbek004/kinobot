@@ -15,8 +15,11 @@ django.setup()
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 
+from aiogram.client.session.aiohttp import AiohttpSession
+
 # Initialize bot and dispatcher
-bot = Bot(token=BOT_TOKEN)
+session = AiohttpSession(proxy="http://proxy.server:3128")
+bot = Bot(token=BOT_TOKEN, session=session)
 dp = Dispatcher()
 
 # Import handlers after django setup
